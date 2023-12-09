@@ -11,20 +11,20 @@ def zip_folder(path_to_folder, output_path):
                 file_path = os.path.join(root, file)
                 zf.write(file_path, os.path.relpath(file_path, path_to_folder))
 
-def get_first_folder_paths(target_folder):
+def get_world_folder_paths(target_folder):
     folder_paths = []
     entries = os.listdir(target_folder)
     for entry in entries:
-        entry_path = os.path.join(target_folder, entry) # Construct the full path to the entry
+        entry_path = os.path.join(target_folder, entry)
         # Check if the entry is a directory
         if os.path.isdir(entry_path):
             folder_paths.append(entry_path)
     return folder_paths
 
-worlds = get_first_folder_paths(source)
+worlds = get_world_folder_paths(source)
 
 for world in worlds:
-    # Read world name
+    # Read world name from txt file
     txt = os.path.join(world,'levelname.txt')
     with open(txt, 'r') as file:
         world_name = file.read()
