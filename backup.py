@@ -26,16 +26,20 @@ def get_world_folder_paths(target_folder):
             folder_paths.append(entry_path)
     return folder_paths
 
+
+
 worlds = get_world_folder_paths(source)
 
 for world in worlds:
-    counter = 1
+    counter = 0
     # Read world name from txt file
     txt = os.path.join(world,'levelname.txt')
     with open(txt, 'r') as file:
         world_name = file.read()
-    output_path = os.path.join(output_base, f'{world_name}.mcworld')
 
+    counter += 1
+    output_path = os.path.join(output_base, f'{world_name}.mcworld')
+    
     
     zip_folder(world, output_path)
     print('Saved',output_path)
