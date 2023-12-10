@@ -1,8 +1,11 @@
 import zipfile, os
 # from datetime import datetime
 # now=datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-source = "C:/Users/bdcas/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds"
-output_base = 'C:/Users/bdcas/OneDrive/Desktop/python/minecraft/'
+
+appdata = os.environ['APPDATA'].replace('\\Roaming','')
+onedrive = os.environ['ONEDRIVE']
+source = os.path.join(appdata, "Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds")
+output_base = os.path.join(onedrive, 'Desktop/python/minecraft/')
 
 def zip_folder(path_to_folder, output_path):
     with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zf:
@@ -30,4 +33,5 @@ for world in worlds:
         world_name = file.read()
     output_path = os.path.join(output_base, f'{world_name}.mcworld')
     zip_folder(world, output_path)
-    print('Saved', world_name)
+    print('Saved',output_path)
+
