@@ -2,7 +2,7 @@ import zipfile, os
 
 appdata = os.environ['APPDATA'].replace('\\Roaming','')
 source = os.path.join(appdata, "Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds")
-output_base = '//MORPHEUS/backup/minecraft/Minecraft worlds'
+output_base = '//MORPHEUS/backup/minecraft/Minecraft worlds' # Change according to your requirements
 
 def zip_folder(path_to_folder, output_path):
     with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as zf:
